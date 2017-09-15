@@ -2,12 +2,12 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 
-_udev_ver=220
+_udev_ver=234
 
 pkgbase=eudev
 pkgname=('eudev' 'libeudev')
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.gentoo.org/proj/en/eudev/"
