@@ -69,13 +69,11 @@ package() {
   install -m644 system.bashrc $pkgdir/etc/bash/bashrc
   install -m644 system.bash_logout "$pkgdir"/etc/bash/bash_logout
 
-  # artix bashrc
-  install -m644 artix.bashrc "$pkgdir"/etc/bash/bashrc.d/artix.bashrc
-
   # user configuration file skeletons
   install -m644 dot.bashrc "$pkgdir"/etc/skel/.bashrc
   install -m644 dot.bash_profile "$pkgdir"/etc/skel/.bash_profile
   install -m644 dot.bash_logout "$pkgdir"/etc/skel/.bash_logout
+  install -m644 artix.bashrc "$pkgdir"/etc/bash/bashrc.d/artix.bashrc
 }
 
 md5sums=('148888a7c95ac23705559b6f477dfe25'
