@@ -75,10 +75,13 @@ LocalFileSigLevel = Optional
 [system]
 Include = /etc/pacman.d/mirrorlist
 
+#[world-testing]
+#Include = /etc/pacman.d/mirrorlist
+
 [world]
 Include = /etc/pacman.d/mirrorlist
 
-#[world-testing]
+#[galaxy-testing]
 #Include = /etc/pacman.d/mirrorlist
 
 [galaxy]
@@ -87,11 +90,11 @@ Include = /etc/pacman.d/mirrorlist
 # If you want to run 32 bit applications on your x86_64 system,
 # enable the multilib repositories as required here.
 
-#[multilib-testing]
-#Include = /etc/pacman.d/mirrorlist-arch
+#[lib32-testing]
+#Include = /etc/pacman.d/mirrorlist
 
-#[multilib]
-#Include = /etc/pacman.d/mirrorlist-arch
+#[lib32]
+#Include = /etc/pacman.d/mirrorlist
 
 # An example of a custom package repository.  See the pacman manpage for
 # tips on creating your own repositories.
@@ -99,11 +102,14 @@ Include = /etc/pacman.d/mirrorlist
 #SigLevel = Optional TrustAll
 #Server = file:///home/custompkgs
 
-#[core]
-#Include = /etc/pacman.d/mirrorlist-arch
-
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch
 
 [community]
 Include = /etc/pacman.d/mirrorlist-arch
+
+#[multilib-testing]
+#Include = /etc/pacman.d/mirrorlist-arch
+
+#[multilib]
+#Include = /etc/pacman.d/mirrorlist-arch

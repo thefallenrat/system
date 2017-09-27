@@ -75,10 +75,13 @@ LocalFileSigLevel = Optional
 [system]
 Include = /etc/pacman.d/mirrorlist
 
+#[world-testing]
+#Include = /etc/pacman.d/mirrorlist
+
 [world]
 Include = /etc/pacman.d/mirrorlist
 
-#[world-testing]
+#[galaxy-testing]
 #Include = /etc/pacman.d/mirrorlist
 
 [galaxy]
@@ -89,9 +92,6 @@ Include = /etc/pacman.d/mirrorlist
 #[custom]
 #SigLevel = Optional TrustAll
 #Server = file:///home/custompkgs
-
-#[core]
-#Include = /etc/pacman.d/mirrorlist-arch
 
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch
