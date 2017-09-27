@@ -18,14 +18,10 @@ _commit=596d4ad222328e8bae7a00cc489a9f862edc82fb #tag=upstream/0.26
 source=("git+https://anonscm.debian.org/cgit/collab-maint/mlocate.git#commit=$_commit"
 	'sysusers.d'
 	'updatedb.conf'
-	'updatedb.timer'
-	'updatedb.service'
 	'updatedb.cron')
 sha256sums=('SKIP'
             '1713a8fc8b81f4a390bf8597c4c0e917474379002dcc984aad2f44218d10c82a'
             'ea65bb68bb854803965ac16c770ba2567256e2066d68c272f1a1974ffc5c5ee7'
-            '2e813effb651fae101d93722827553c6b9b9d42e898e808db4991eafdd330e02'
-            '83c7a508bad5dccd55a158cf8b8029d680f82cf8b1d21074279def14d9ad4dee'
             '9f0c18a683f0dbeeae3f673bc3b2dbe1b54173da1589598672f254eb7a708f1e')
 
 prepare() {
