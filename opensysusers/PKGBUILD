@@ -9,7 +9,6 @@ pkgdesc="A standalone utility for handling systemd-style sysusers.d users and gr
 arch=('any')
 url="https://github.com/artix-linux/opensysusers"
 license=('BSD2')
-# groups=('base')
 # depends=('openrc')
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/${pkgver}.tar.gz"
 		'opensysusers.hook')
