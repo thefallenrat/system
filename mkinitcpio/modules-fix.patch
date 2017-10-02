@@ -1,0 +1,19 @@
+init | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/init b/init
+index 2cb3526..bb26d47 100644
+--- a/init
++++ b/init
+@@ -23,8 +23,8 @@ done
+
+ run_hookfunctions 'run_earlyhook' 'early hook' $EARLYHOOKS
+
+-if [ -n "$earlymodules$MODULES" ]; then
+-    modprobe -qab ${earlymodules//,/ } $MODULES
++if [ -n "$earlymodules${MODULES[@]}" ]; then
++    modprobe -qab ${earlymodules//,/ } ${MODULES[@]}
+ fi
+
+ run_hookfunctions 'run_hook' 'hook' $HOOKS
+
