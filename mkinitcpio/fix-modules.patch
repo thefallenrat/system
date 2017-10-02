@@ -1,0 +1,17 @@
+ functions | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/functions b/functions
+index 1486f2f..4ea304f 100644
+--- a/functions
++++ b/functions
+@@ -629,7 +629,7 @@ parse_config() {
+     tee "$BUILDROOT/buildconfig" < "$1" | {
+         . /dev/stdin
+
+-        for mod in "${modules[@]%\?}"; do
++        for mod in "${MODULES[@]%\?}"; do
+             mod=${mod//-/_}
+             # only add real modules (2 == builtin)
+             (( _addedmodules["$mod"] == 1 )) && add+=("$mod")
+
