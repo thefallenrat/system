@@ -4,8 +4,8 @@
 
 pkgbase=lvm2
 pkgname=('lvm2' 'device-mapper')
-pkgver=2.02.174
-pkgrel=2
+pkgver=2.02.175
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://sourceware.org/lvm2/"
 license=('GPL2' 'LGPL2.1')
@@ -15,23 +15,18 @@ validpgpkeys=('88437EF5C077BD113D3B7224228191C1567E2C17') # Alasdair G Kergon <a
 source=(https://mirrors.kernel.org/sourceware/lvm2/releases/LVM2.${pkgver}.tgz{,.asc}
         lvm2_install
         lvm2_hook
-        11-dm-initramfs.rules
-        0002-toollib_fix_parentheses_in_assignment_comparison.patch)
-sha256sums=('fb6ecec0408cb14ac4923c87cb0a356481122d7d0ae3fee6e94d2edb9d170a8b'
+        11-dm-initramfs.rules)
+sha256sums=('4db7a3ec6d082be212f759279b54bcdfd3c3797a5ea67605746049b004632559'
             'SKIP'
             'd3097296bdfd9912dbef6ac78b908f7017b0a668a5347f0811f1c3aaacdca0cf'
             '37e7619f0aacfb5da535148800426f7ff385487763cabd141b874599ad718df2'
-            'e10f24b57582d6e2da71f7c80732a62e0ee2e3b867fe84591ccdb53e80fa92e0'
-            '9883be237acb9fc49f229621d0c025fd9c29a4d0f43bfbe87ab6eb76bf389338')
+            'e10f24b57582d6e2da71f7c80732a62e0ee2e3b867fe84591ccdb53e80fa92e0')
 
 prepare() {
   cd LVM2.${pkgver}
 
   # enable lvmetad
   sed -i 's|use_lvmetad = 0|use_lvmetad = 1|' conf/example.conf.in
-
-  # toollib: fix parentheses in assignment + comparison
-  patch -p1 -i "${srcdir}/0002-toollib_fix_parentheses_in_assignment_comparison.patch"
 }
 
 build() {
@@ -69,7 +64,7 @@ package_device-mapper() {
 
 package_lvm2() {
   pkgdesc="Logical Volume Manager 2 utilities"
-  depends=('bash' "device-mapper>=${pkgver}" 'eudev' 'readline' 'thin-provisioning-tools')
+  depends=('bash' "device-mapper>=${pkgver}" 'libeudev' 'readline' 'thin-provisioning-tools')
   conflicts=('lvm' 'mkinitcpio<0.7')
   backup=('etc/lvm/lvm.conf'
     'etc/lvm/lvmlocal.conf')
