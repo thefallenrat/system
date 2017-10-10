@@ -2,7 +2,7 @@
 # Maintainer: Dave Reisner <dreisner@archlinux.org>
 
 pkgname=pambase
-pkgver=20170803
+pkgver=20171006
 pkgrel=1
 pkgdesc="Base PAM configuration for services"
 arch=('any')
