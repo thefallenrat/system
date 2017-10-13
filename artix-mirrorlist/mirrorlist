@@ -1,10 +1,23 @@
 ##
 ## Artix Linux repository mirrorlist
-## Generated on 2017-08-18
+## Generated on 2017-09-16
 ##
 
-## Worldwide
+# Artix mirrors
+
+Server = http://mirror1.artixlinux.org/repos/$repo/os/$arch
+Server = http://artix.wheaton.edu/repos/$repo/os/$arch/
+Server = http://mirror.strits.dk/artix-linux/repos/$repo/os/$arch
+Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch
+Server = https://www.uex.dk/repos/artix/repos/$repo/os/$arch
+
+
+## SF Worldwide (outdated -- to be removed)
 Server = https://netcologne.dl.sourceforge.net/project/artix-linux/repos/$repo/os/$arch
+Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch
+Server = https://artix.mief.nl/repos/$repo/os/$arch
+Server = http://mirror.strits.dk/artix-linux/repos/$repo/os/$arch
+Server = http://mirror1.artixlinux.org/artix-linux/repos/$repo/os/$arch
 Server = https://freefr.dl.sourceforge.net/project/artix-linux/repos/$repo/os/$arch
 Server = https://10gbps-io.dl.sourceforge.net/project/artix-linux/repos/$repo/os/$arch
 Server = https://netix.dl.sourceforge.net/project/artix-linux/repos/$repo/os/$arch
@@ -29,4 +42,3 @@ Server = https://jaist.dl.sourceforge.net/project/artix-linux/repos/$repo/os/$ar
 Server = https://ncu.dl.sourceforge.net/project/artix-linux/repos/$repo/os/$arch
 Server = https://nchc.dl.sourceforge.net/project/artix-linux/repos/$repo/os/$arch
 Server = https://vorboss.dl.sourceforge.net/project/artix-linux/repos/$repo/os/$arch
-Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch

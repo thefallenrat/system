@@ -9,31 +9,30 @@ $_prefix && _sed_args+=(-e 's|#!/sbin/openrc-run|#!/usr/bin/openrc-run|g')
 
 pkgbase=openrc-system
 pkgname=(
-        'dbus-openrc'
-        'cronie-openrc'
-        'cryptsetup-openrc'
-        'dhcpcd-openrc'
-        'device-mapper-openrc'
-        'glibc-openrc'
-        'inetutils-openrc'
-        'lvm2-openrc'
-        'mdadm-openrc'
-        'nfs-utils-openrc'
-        'rpcbind-openrc'
+#         'dbus-openrc'
+#         'cronie-openrc'
+#         'cryptsetup-openrc'
+#         'dhcpcd-openrc'
+#         'device-mapper-openrc'
+#         'glibc-openrc'
+#         'inetutils-openrc'
+#         'lvm2-openrc'
+#         'mdadm-openrc'
+#         'nfs-utils-openrc'
+#         'rpcbind-openrc'
         'elogind-openrc'
-        'gpm-openrc'
-        'hdparm-openrc'
-        'iptables-openrc'
-        'krb5-openrc'
-        'openldap-openrc'
-        'openssh-openrc'
-        'openvpn-openrc'
-        'wpa_supplicant-openrc'
-        'xinetd-openrc'
-        'kmod-openrc'
-        'grafana-openrc'
+#         'gpm-openrc'
+#         'hdparm-openrc'
+#         'iptables-openrc'
+#         'krb5-openrc'
+#         'openldap-openrc'
+#         'openssh-openrc'
+#         'openvpn-openrc'
+#         'wpa_supplicant-openrc'
+#         'xinetd-openrc'
+#         'kmod-openrc'
 )
-pkgver=20170813
+pkgver=20171002
 pkgrel=1
 pkgdesc="OpenRC init scripts"
 arch=('any')
@@ -98,8 +97,6 @@ source=(
         "xinetd.confd::${_url}/sys-apps/xinetd/files/xinetd.confd"
         "xinetd.initd::${_url}/sys-apps/xinetd/files/xinetd.rc6"
         'kmod-static-nodes.initd'
-        "grafana.confd::${_url}/www-apps/grafana-bin/files/grafana.confd"
-        "grafana.initd::${_url}/www-apps/grafana-bin/files/grafana.initd.3"
 )
 
 pkgver() {
@@ -404,18 +401,6 @@ package_xinetd-openrc() {
         -i "${pkgdir}/etc/init.d/xinetd"
 }
 
-package_grafana-openrc() {
-    pkgdesc="Grafana init script"
-    depends=('openrc' 'grafana')
-    backup=('etc/conf.d/grafana')
-
-    _inst_confd 'grafana'
-    _inst_initd 'grafana'
-
-    sed -e "s|/usr/sbin|/usr/bin|g" \
-        -i "${pkgdir}/etc/init.d/grafana"
-}
-
 sha256sums=('8646ff964892eeb5f6c5da444a5ef5d898fb1f3a395c5b9fc85d32d8d56fc785'
             '3d933a54abe62a547294b83208dbf5d7615d9c7f380d6504c91fff3620530803'
             'd04627e1a64e4d86e957b20ff6f478fb376833b7602098a708af9c070e30a980'
@@ -448,7 +433,7 @@ sha256sums=('8646ff964892eeb5f6c5da444a5ef5d898fb1f3a395c5b9fc85d32d8d56fc785'
             '38bb95aefc38d843d0890d9c15affd28f19f2133c17f463396c62970e7e2dffc'
             'da992f87b5043e22dfd340b4a5440b76dce29cc14d3ef7b0ce586726fe4b220b'
             'ad651e0c6cd456cc0209802ac878a7c08e69435f0428ded4ad116d11f728b2dd'
-            'd59703c7911433e16649488a96a6e79e9de67fadb2ebd0db68d63169bd26df9e'
+            '982423a88eea889c194123ecffbdea03d8f94ca497b7b32bd86fdf20a81680c7'
             '73e7483fdc4b12ab4225a4cb13bbe7da71b07b9e69b17e3a6a4c63cb5e2287c8'
             'b48fd8ef0c4e64ca3f3ada72e8e2148a276f86bf3cbb1a165504058bd15385c1'
             '37c95ff723fa578e9039613d09dbf790d99113a318c065422986c744519214e9'
@@ -470,6 +455,4 @@ sha256sums=('8646ff964892eeb5f6c5da444a5ef5d898fb1f3a395c5b9fc85d32d8d56fc785'
             'f3aa34b99a90213c53496f8ea014c487266338791f3526043a7fd97adc651fc6'
             'e401e2cf7c0180a170d3dc3e91d7e98002bae7b013df72813b7bcf89b864fb3a'
             '6934fee5e3997d7e152c26d0c1a8f8d2f7563287fcc1ae934e4552d523c39329'
-            '3ecbe7761b92a123a5a3d395ec3d9e090b0dfba7910a5987b4a2298c20a7e571'
-            '5b9e125f2648ed98125097770b609dcce543443f0862b99c0653f55b3b9be895'
-            '0f898484e081a416429d4a881c99988aea6a9d9d2085b326c5dd1e85163cbb39')
+            '3ecbe7761b92a123a5a3d395ec3d9e090b0dfba7910a5987b4a2298c20a7e571')

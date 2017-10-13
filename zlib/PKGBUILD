@@ -3,7 +3,7 @@
 
 pkgbase=zlib
 pkgname=(zlib minizip)
-# epoch=1
+epoch=1
 pkgver=1.2.11
 pkgrel=2
 arch=('i686' 'x86_64')

@@ -4,7 +4,7 @@
 
 pkgbase=lvm2
 pkgname=('lvm2' 'device-mapper')
-pkgver=2.02.173
+pkgver=2.02.175
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://sourceware.org/lvm2/"
@@ -16,7 +16,7 @@ source=(https://mirrors.kernel.org/sourceware/lvm2/releases/LVM2.${pkgver}.tgz{,
         lvm2_install
         lvm2_hook
         11-dm-initramfs.rules)
-sha256sums=('ceb9168c7e009ef487f96a1fe969b23cbb07d920ffb71769affdbdf30fea8d64'
+sha256sums=('4db7a3ec6d082be212f759279b54bcdfd3c3797a5ea67605746049b004632559'
             'SKIP'
             'd3097296bdfd9912dbef6ac78b908f7017b0a668a5347f0811f1c3aaacdca0cf'
             '37e7619f0aacfb5da535148800426f7ff385487763cabd141b874599ad718df2'
@@ -27,7 +27,6 @@ prepare() {
 
   # enable lvmetad
   sed -i 's|use_lvmetad = 0|use_lvmetad = 1|' conf/example.conf.in
-
 }
 
 build() {
@@ -65,7 +64,7 @@ package_device-mapper() {
 
 package_lvm2() {
   pkgdesc="Logical Volume Manager 2 utilities"
-  depends=('bash' "device-mapper>=${pkgver}" 'eudev' 'readline' 'thin-provisioning-tools')
+  depends=('bash' "device-mapper>=${pkgver}" 'libeudev' 'readline' 'thin-provisioning-tools')
   conflicts=('lvm' 'mkinitcpio<0.7')
   backup=('etc/lvm/lvm.conf'
     'etc/lvm/lvmlocal.conf')
