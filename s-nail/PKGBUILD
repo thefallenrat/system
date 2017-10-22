@@ -41,8 +41,8 @@ build() {
 
 check() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	sudo sed '/en_US.UTF-8/s/^#//' -i /etc/locale.gen
-	sudo locale-gen
+	sed '/en_US.UTF-8/s/^#//' -i /etc/locale.gen
+	locale-gen
 
 	make test
 }
