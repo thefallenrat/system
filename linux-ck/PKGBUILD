@@ -35,7 +35,7 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
-### Do no edit below this line unless you know what you're doing
+### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
 _srcname=linux-4.13
