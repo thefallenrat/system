@@ -7,7 +7,7 @@ pkgbase=util-linux
 pkgname=(util-linux libutil-linux)
 _pkgmajor=2.31
 pkgver=${_pkgmajor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
@@ -17,13 +17,15 @@ options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/$pkgbase-$pkgver.tar."{xz,sign}
         pam-{login,common,su}
-        'util-linux.sysusers')
+        'util-linux.sysusers'
+        '60-rfkill.rules')
 md5sums=('5b6821c403c3cc6e7775f74df1882a20'
          'SKIP'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
          'fa85e5cce5d723275b14365ba71a8aad'
-         'dfc9904f67ebc54bb347ca3cc430ef2b')
+         'dfc9904f67ebc54bb347ca3cc430ef2b'
+         '63f9bf9264911242e430867a41e8918c')
 
 build() {
   cd "$pkgbase-$pkgver"
@@ -39,7 +41,6 @@ build() {
               --enable-chfn-chsh \
               --enable-write \
               --enable-mesg \
-              --with-python=3 \
               --with-systemd=no \
               --with-systemdsystemunitdir=no
   make
@@ -84,6 +85,9 @@ package_util-linux() {
   ### install sysusers
   install -Dm644 "$srcdir/util-linux.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/util-linux.conf"
+
+    install -Dm644 "$srcdir/60-rfkill.rules" \
+        "$pkgdir/usr/lib/udev/rules.d/60-rfkill.rules"
 }
 
 package_libutil-linux() {

@@ -4,8 +4,8 @@
 pkgbase=linux-lts
 #pkgbase=linux-lts-custom
 _srcname=linux-4.9
-pkgver=4.9.58
-pkgrel=2
+pkgver=4.9.59
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
             'SKIP'
-            '8b1ce30f1123eab6f3ec0a3e231099f6e1bf9460f9af3771e4df5d79c4ffc07d'
+            '2490246b965c7df24208e6e3512ff19c69e0603435865fda5152195eab073800'
             'SKIP'
             '39e780d61a46eae6ff7714b070942c7c033d449436df561727a93c64d28b3485'
             '1bec2ba1cd21b26234caf33cca737259797430d4fe5fade16e60480a9442a6e0'
