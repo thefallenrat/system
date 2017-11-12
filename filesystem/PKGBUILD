@@ -3,7 +3,7 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 
 pkgname=filesystem
-pkgver=2017.08
+pkgver=2017.11
 pkgrel=1
 pkgdesc='Base Artix Linux files'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ sha256sums=('faed5839ed5e6797d7fc67f7fc0b003554d32250f3ae2d3241603c70cdc646b0'
             '4e298e0ec247c3bb09157f5598127f6ecb779f5ec018ab69ba4678f361bdaae3'
             '13d1f59c1d0860bf43da996e2b9a6ab2744791614241ed9a1376b7e7e30de3a8'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-            'b0da4b8c5ad08e114c938b1c153e746dc46a949e86da5a39a90649e846fd7506'
+            'a6c394337cf46d390e114fa320e692a0bf7eca94e1a493bf3da2d2fcffab1a7f'
             '74d2be3dd69600bcf0da751a1804a386bf4ad143b76d79c336acaa5c600e7991'
             '6cff886fe9e23096d5f67b7857a747ebaf10431be5a2afc40236de5ad13a654f'
             '33d4bec57c59f378e79ed8f3e4387e65fdd5cfd3d551d7cb015f7cf5cfad72f5'
