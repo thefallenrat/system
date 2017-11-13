@@ -93,6 +93,9 @@ Include = /etc/pacman.d/mirrorlist
 #SigLevel = Optional TrustAll
 #Server = file:///home/custompkgs
 
+#[testing]
+#Include = /etc/pacman.d/mirrorlist-arch
+
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch
 
