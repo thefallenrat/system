@@ -6,15 +6,15 @@
 
 pkgbase=dbus
 pkgname=(dbus dbus-docs)
-pkgver=1.10.24
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
 license=(GPL custom)
 depends=('libx11' 'expat' 'libelogind')
-makedepends=(eudev xmlto docbook-xsl python yelp-tools doxygen git)
-_commit=430643da9da488a0b089868b9aada324f24a1710  # tags/dbus-1.10.24^0
+makedepends=(eudev elogind xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz)
+_commit=0f0968336b9711349023e1d41f075b2bccf7c20b  # tags/dbus-1.12.2^0
 source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit"
         'dbus.sysusers'
         'dbus-enable-elogind.patch')
@@ -31,8 +31,10 @@ pkgver() {
 
 prepare() {
   cd $pkgbase
-  git cherry-pick -n 09cb6d7b467f6d1c6685ee9ccc171f4dddbe1f42
   patch -Np 1 -i ${srcdir}/dbus-enable-elogind.patch
+  # Reduce docs size
+  printf '%s\n' >>Doxyfile.in \
+    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
   NOCONFIGURE=1 ./autogen.sh
 }
 
