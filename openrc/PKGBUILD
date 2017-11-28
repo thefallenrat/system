@@ -4,7 +4,7 @@
 _url="https://github.com/OpenRC/openrc/archive"
 
 pkgname=openrc
-pkgver=0.34.8
+pkgver=0.34.10
 pkgrel=1
 pkgdesc="Gentoo's universal init system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -27,7 +27,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${_url}/${pkgver}.tar.gz"
         "${pkgname}.logrotate"
         'openrc-install.hook'
         'openrc-remove.hook')
-sha256sums=('d8af528f165bdda39599f06ffa75a6f0e8178e754cccd26bc29478158fbd1b02'
+sha256sums=('8eb39c3f1b707d6258db74b76bde3b6afa2da4026ac27f51ba12cd9fc7b6fb19'
             '0b44210db9770588bd491cd6c0ac9412d99124c6be4c9d3f7d31ec8746072f5c'
             '1d4d31a7275660e7b23778e6fceb0714cab8ed2793b04aa004b01d8e7bcd43bd'
             'cbb4d00262a55a508114cb31e3903350be2cff748a4fb5e120dc745292e3987e')
