@@ -7,8 +7,7 @@
 *.bz
 *.zip
 linux-lts.install.pkg
-btrfs-progs/btrfs-scrub@.service
-btrfs-progs/btrfs-scrub@.timer
-iptables/ip6tables.service
-iptables/iptables-flush
-iptables/iptables.service
+*.service
+*.timer
+iptables-flush
+
