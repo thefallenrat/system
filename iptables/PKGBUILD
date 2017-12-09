@@ -4,9 +4,9 @@
 
 pkgname=iptables
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel packet control tool'
-arch=(i686 x86_64)
+arch=(x86_64)
 license=(GPL2)
 url='http://www.netfilter.org/projects/iptables/index.html'
 depends=(glibc bash libnftnl libpcap)
@@ -63,5 +63,6 @@ package() {
   install -d "$pkgdir"/var/lib/{iptables,ip6tables}
   install -m644 empty-{filter,mangle,nat,raw,security}.rules "${pkgdir}"/var/lib/iptables
   install -m644 empty-{filter,mangle,nat,raw,security}.rules "${pkgdir}"/var/lib/ip6tables
+
 }
 
