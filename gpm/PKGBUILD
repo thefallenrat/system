@@ -12,7 +12,7 @@ depends=('bash' 'procps-ng')
 options=('!makeflags')
 source=(https://github.com/telmich/gpm/archive/${pkgver}.tar.gz
         gpm.sh)
-sha1sums=('8d9f3655c80ce7667d31ede2a100b44986480369'
+sha1sums=('28d7cd78268e27cae847d2ab662b599b740c0bdb'
           '94447c6f8bfadd062efa1a747a597426f339d13e')
 
 build() {
