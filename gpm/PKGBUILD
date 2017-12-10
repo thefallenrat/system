@@ -2,7 +2,7 @@
 # Maintainer: Eric Bélanger <eric@archlinux.org>
 
 pkgname=gpm
-pkgver=1.20.7 # rebuild
+pkgver=1.20.7
 pkgrel=8
 pkgdesc="A mouse server for the console and xterm"
 arch=('i686' 'x86_64')
@@ -10,20 +10,20 @@ url="http://www.nico.schottelius.org/software/gpm/"
 license=('GPL')
 depends=('bash' 'procps-ng')
 options=('!makeflags')
-source=(http://www.nico.schottelius.org/software/gpm/archives/${pkgname}-${pkgver}.tar.lzma
+source=(https://github.com/telmich/gpm/archive/${pkgver}.tar.gz
         gpm.sh)
 sha1sums=('8d9f3655c80ce7667d31ede2a100b44986480369'
           '94447c6f8bfadd062efa1a747a597426f339d13e')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgver}"
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -D -m755 ../gpm.sh "${pkgdir}/etc/profile.d/gpm.sh"
 
