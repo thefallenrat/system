@@ -7,3 +7,7 @@
 *.bz
 *.zip
 linux-lts.install.pkg
+*.service
+*.timer
+iptables-flush
+

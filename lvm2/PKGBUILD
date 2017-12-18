@@ -5,8 +5,8 @@
 pkgbase=lvm2
 pkgname=('lvm2' 'device-mapper')
 pkgver=2.02.176
-pkgrel=1
-arch=('i686' 'x86_64')
+pkgrel=2
+arch=('x86_64')
 url="http://sourceware.org/lvm2/"
 license=('GPL2' 'LGPL2.1')
 makedepends=('eudev' 'thin-provisioning-tools')
@@ -30,23 +30,40 @@ prepare() {
 }
 
 build() {
-  CONFIGUREOPTS="--prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin \
-      --with-udev-prefix=/usr  \
-      --with-default-pid-dir=/run --with-default-dm-run-dir=/run --with-default-run-dir=/run/lvm \
-      --enable-pkgconfig --enable-readline --enable-dmeventd --enable-cmdlib --enable-applib \
-      --enable-udev_sync --enable-udev_rules --with-default-locking-dir=/run/lock/lvm \
-      --enable-lvmetad --with-thin=internal --with-cache=internal"
+  local CONFIGUREOPTS=(
+    --prefix=/usr
+    --sbindir=/usr/bin
+    --sysconfdir=/etc
+    --localstatedir=/var
+    --enable-applib
+    --enable-cmdlib
+    --enable-dmeventd
+    --enable-lvmetad
+    --enable-lvmpolld
+    --enable-pkgconfig
+    --enable-readline
+    --enable-udev_rules
+    --enable-udev_sync
+    --with-cache=internal
+    --with-default-dm-run-dir=/run
+    --with-default-locking-dir=/run/lock/lvm
+    --with-default-pid-dir=/run
+    --with-default-run-dir=/run/lvm
+    --with-systemdsystemunitdir=no
+    --with-thin=internal
+    --with-udev-prefix=/usr
+  )
 
   cp -a LVM2.${pkgver} LVM2-initramfs
 
   cd LVM2.${pkgver}
 
-  ./configure $CONFIGUREOPTS
+  ./configure "${CONFIGUREOPTS[@]}"
   make
 
   # Build legacy udev rule for initramfs
   cd ../LVM2-initramfs
-  ./configure $CONFIGUREOPTS
+  ./configure "${CONFIGUREOPTS[@]}"
   cd udev
   make 69-dm-lvm-metad.rules
 }

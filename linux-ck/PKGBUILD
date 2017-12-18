@@ -7,6 +7,37 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
+# Optionally select a sub architecture by number if building in a clean chroot
+# Leaving this entry blank will require user interaction during the build 
+# which will cause a failure to build if using makechrootpkg. Note that the
+# generic (default) option is 23.
+#
+#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
+#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
+#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
+#  4. AMD Barcelona (MBARCELONA)
+#  5. AMD Bobcat (MBOBCAT)
+#  6. AMD Jaguar (MJAGUAR)
+#  7. AMD Bulldozer (MBULLDOZER)
+#  8. AMD Piledriver (MPILEDRIVER)
+#  9. AMD Steamroller (MSTEAMROLLER)
+#  10. AMD Excavator (MEXCAVATOR)
+#  11. AMD Zen (MZEN)
+#  12. Intel P4 / older Netburst based Xeon (MPSC)
+#  13. Intel Atom (MATOM)
+#  14. Intel Core 2 (MCORE2)
+#  15. Intel Nehalem (MNEHALEM)
+#  16. Intel Westmere (MWESTMERE)
+#  17. Intel Silvermont (MSILVERMONT)
+#  18. Intel Sandy Bridge (MSANDYBRIDGE)
+#  19. Intel Ivy Bridge (MIVYBRIDGE)
+#  20. Intel Haswell (MHASWELL)
+#  21. Intel Broadwell (MBROADWELL)
+#  22. Intel Skylake (MSKYLAKE)
+#  23. Generic-x86-64 (GENERIC_CPU)
+#  24. Native optimizations autodetected by GCC (MNATIVE)
+_subarch=
+
 # NUMA is optimized for multi-socket motherboards. A single multi-core CPU can
 # actually run slower with NUMA enabled. Most users will want to set this option
 # to enabled ... in other words, do not use NUMA on a single CPU system.
@@ -39,7 +70,7 @@ _use_current=
 
 pkgbase=linux-ck
 _srcname=linux-4.14
-pkgver=4.14.4
+pkgver=4.14.7
 pkgrel=1
 _ckpatchversion=1
 arch=('x86_64')
@@ -67,6 +98,9 @@ source=(
   "$_preck2/1588e6bf316231685204e358dfe172851b39fd1e.patch"
   "$_preck2/df2a75f4864b30011ab6a6f365d9378d8eafa53b.patch"
   "$_preck2/a79d648fcde72fc98048d4435bc86864a59fd01b.patch"
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+  0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -74,9 +108,9 @@ validpgpkeys=(
 )
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'e9dcf9aad5977289940cd6e3762af02b87a725ba6c1a9f4af86958dc621e3a84'
+            '5c286695439b4a1a2c7a112cf41aae0441b03ef41dfe83a0d61161c16dc265f5'
             'SKIP'
-            '8cb75d76f7923723591bbcca72f98f362ca1e47b8418118142fb1fa9481b0b33'
+            '565f14038a4e781bdf3914dd374fb16553d7925dd3ead14e8b72c9d308828b45'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
@@ -86,7 +120,10 @@ sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             '453ccb01d9e56ea3a33621516f0d52568e836d1932ff14e26567cc3fe2101a17'
             'd2f59cf1c5187204eced6e53806b187e90698fcb2309955aed4020a15c659ae1'
             '3d4d2506795c4bd914959758f5b69ccf5a4f5a21f5d4bfc87bf0aa3b4b58f4c6'
-            '0dbf2d23df0b5d023794332872b8b346d0c4994576b778396364e803acac4498')
+            '0dbf2d23df0b5d023794332872b8b346d0c4994576b778396364e803acac4498'
+            '37b86ca3de148a34258e3176dbf41488d9dbd19e93adbd22a062b3c41332ce85'
+            'c6e7db7dfd6a07e1fd0e20c3a5f0f315f9c2a366fe42214918b756f9a1c9bfa3'
+            '1d69940c6bf1731fa1d1da29b32ec4f594fa360118fe7b128c9810285ebf13e2')
 
 _kernelname=${pkgbase#linux}
 
@@ -95,6 +132,15 @@ prepare() {
 
   # add upstream patch
   patch -p1 -i ../patch-${pkgver}
+
+  # disable USER_NS for non-root users by default
+  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  
+  # https://bugs.archlinux.org/task/56575
+  patch -Np1 -i ../0001-e1000e-Fix-e1000_check_for_copper_link_ich8lan-retur.patch
+  
+  # https://nvd.nist.gov/vuln/detail/CVE-2017-8824
+  patch -Np1 -i ../0002-dccp-CVE-2017-8824-use-after-free-in-DCCP-code.patch
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatchname}"
@@ -159,7 +205,11 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   # get kernel version
-  make prepare
+  if [ -n "${_subarch}" ]; then
+    yes "$_subarch" | make oldconfig
+  else
+    make prepare
+  fi
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
