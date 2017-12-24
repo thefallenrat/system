@@ -4,7 +4,7 @@
 
 pkgname=wpa_supplicant
 pkgver=2.6
-pkgrel=11
+pkgrel=11.1
 epoch=1
 pkgdesc='A utility providing key negotiation for WPA wireless networks'
 url='http://hostap.epitest.fi/wpa_supplicant'
@@ -77,14 +77,14 @@ package() {
   install -m644 doc/docbook/*.8 "$pkgdir/usr/share/man/man8/"
   rm -f "$pkgdir/usr/share/man/man8/wpa_"{priv,gui}.8
 
-  install -d -m755 "$pkgdir/usr/share/dbus-1/system-services"
-  install -m644 \
-    dbus/fi.{epitest.hostap.WPASupplicant,w1.wpa_supplicant1}.service \
-    "$pkgdir/usr/share/dbus-1/system-services/"
+#   install -d -m755 "$pkgdir/usr/share/dbus-1/system-services"
+#   install -m644 \
+#     dbus/fi.{epitest.hostap.WPASupplicant,w1.wpa_supplicant1}.service \
+#     "$pkgdir/usr/share/dbus-1/system-services/"
 
   install -Dm644 dbus/dbus-wpa_supplicant.conf \
     "$pkgdir/etc/dbus-1/system.d/wpa_supplicant.conf"
 
-  install -d -m755 "$pkgdir/usr/lib/systemd/system"
-  install -m644 systemd/*.service "$pkgdir/usr/lib/systemd/system/"
+#   install -d -m755 "$pkgdir/usr/lib/systemd/system"
+#   install -m644 systemd/*.service "$pkgdir/usr/lib/systemd/system/"
 }
