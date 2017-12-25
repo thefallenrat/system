@@ -4,7 +4,7 @@ _url="https://github.com/artix-linux/opensysusers/archive"
 
 pkgname=opensysusers
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone utility for handling systemd-style sysusers.d users and groups"
 arch=('any')
 url="https://github.com/artix-linux/opensysusers"
@@ -20,7 +20,7 @@ package() {
     make bindir="/usr/bin" DESTDIR="${pkgdir}" install
     ln -snf "/usr/bin/sysusers" "${pkgdir}/usr/bin/systemd-sysusers"
 
-#     install -vDm0755 openrc/opensysusers.initd "${pkgdir}"/etc/init.d/opensysusers
+      install -vDm0755 openrc/opensysusers.initd "${pkgdir}"/etc/init.d/opensysusers
 
 
 #     install -dm0755 "${pkgdir}/etc/runlevels/boot"
