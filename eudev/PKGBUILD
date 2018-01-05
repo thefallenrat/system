@@ -7,12 +7,12 @@ _udev_ver=220
 pkgbase=eudev
 pkgname=('eudev' 'libeudev')
 pkgver=3.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The userspace dev tools (udev) forked by Gentoo"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.gentoo.org/proj/en/eudev/"
 license=('GPL')
-makedepends=('gobject-introspection' 'gperf' 'gtk-doc' 'intltool' 'kmod' 'util-linux')
+makedepends=('gobject-introspection' 'gperf' 'gtk-doc' 'intltool' 'kmod' 'util-linux' 'libelf')
 options=('!libtool')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gentoo/eudev/archive/v${pkgver}.tar.gz"
         'initcpio_hooks'
@@ -76,7 +76,7 @@ package_eudev() {
 package_libeudev() {
     pkgdesc="eudev client libraries"
     groups=('base-devel')
-    depends=('glibc')
+    depends=('glibc' 'libelf')
     provides=("libudev=${_udev_ver}" 'libudev.so')
 
     cd "${srcdir}/${pkgbase}-${pkgver}"

@@ -4,7 +4,7 @@
 
 pkgname=wpa_supplicant
 pkgver=2.6
-pkgrel=11
+pkgrel=11.2
 epoch=1
 pkgdesc='A utility providing key negotiation for WPA wireless networks'
 url='http://hostap.epitest.fi/wpa_supplicant'
@@ -85,6 +85,6 @@ package() {
   install -Dm644 dbus/dbus-wpa_supplicant.conf \
     "$pkgdir/etc/dbus-1/system.d/wpa_supplicant.conf"
 
-  install -d -m755 "$pkgdir/usr/lib/systemd/system"
-  install -m644 systemd/*.service "$pkgdir/usr/lib/systemd/system/"
+#   install -d -m755 "$pkgdir/usr/lib/systemd/system"
+#   install -m644 systemd/*.service "$pkgdir/usr/lib/systemd/system/"
 }
