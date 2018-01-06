@@ -4,7 +4,7 @@
 
 pkgname=filesystem
 pkgver=2018.1
-pkgrel=2.3
+pkgrel=2.4
 pkgdesc='Base Artix Linux files'
 arch=('x86_64')
 license=('GPL')
@@ -70,6 +70,7 @@ package() {
   touch etc/artix-release
   install -m755 "$srcdir"/locale.sh etc/profile.d/locale.sh
   install -Dm644 "$srcdir"/os-release usr/lib/os-release
+  ln -s ../usr/lib/os-release etc/os-release
 
   # setup /var
   for d in cache local opt log/old lib/misc empty; do
