@@ -4,9 +4,9 @@
 
 pkgname=man-db
 pkgver=2.7.6.1
-pkgrel=2
+pkgrel=2.1
 pkgdesc="A utility for reading man pages"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.nongnu.org/man-db/"
 license=('GPL' 'LGPL')
 groups=('base')
@@ -30,7 +30,9 @@ validpgpkeys=('AC0A4FF12611B6FCCF01C111393587D97D86500B') # Colin Watson <cjwats
 
 prepare() {
   cd ${pkgname}-${pkgver}
-
+  
+  # fix group in tempfile
+  sed -i 's/man\ man/root\ root/' init/systemd/man-db.conf
 }
 
 build() {
