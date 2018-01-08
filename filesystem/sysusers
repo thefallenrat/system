@@ -13,6 +13,8 @@ g games 50 - -
 g lock 54 - -
 g network 90 - -
 g video 91 - -
+g audio 92 - -
+g optical 93 - -
 g floppy 94 - -
 g storage 95 - -
 g scanner 96 - -
