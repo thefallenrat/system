@@ -3,18 +3,22 @@
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
 pkgver=234.4
-pkgrel=4
+pkgrel=5
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/elogind/elogind"
 license=('GPL' 'LGPL2.1')
 makedepends=('intltool' 'libtool' 'gperf' 'gtk-doc' 'polkit' 'dbus' 'eudev' 'libseccomp')
 options=('!libtool')
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/elogind/elogind/archive/v${pkgver}.tar.gz")
-sha256sums=('ffb465a62c4281c19b07eb7fbb9ad0987f3b726ae1a868a92a3144d7714542f3')
+source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/elogind/elogind/archive/v${pkgver}.tar.gz"
+        "protect-user-XDG_RUNTIME_DIR.patch")
+
+sha256sums=('ffb465a62c4281c19b07eb7fbb9ad0987f3b726ae1a868a92a3144d7714542f3'
+            '4b04eb4bd87a6b0b15290f87b475d87920d5060ee7bf1583a2320f8f7f4c7658')
 
 prepare() {
     cd ${pkgbase}-${pkgver}
+    patch -Np1 -i ${srcdir}/protect-user-XDG_RUNTIME_DIR.patch
     ./autogen.sh
 }
 
