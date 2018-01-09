@@ -4,7 +4,7 @@
 
 pkgname=filesystem
 pkgver=2018.1
-pkgrel=2.8
+pkgrel=2.9
 pkgdesc='Base Artix Linux files'
 arch=('x86_64')
 license=('GPL')
@@ -37,7 +37,7 @@ md5sums=('5fa6674df7645d7f5895f2d12b4ef4e9'
          'f04bcb2803afc4dcb95670fe87343b4d'
          'f64466dd77c7bec37a8b47681468211a'
          'a78cd8d7f8240a8448edee82f503c34e'
-         '24e4aafa89046c6d62a2cfa68e9f517c'
+         '1e131e0068ee9e179bab6e188abec549'
          '0267a3a463f35eec8a31f40a720dfd86')
 
 package() {

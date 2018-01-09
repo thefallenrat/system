@@ -24,6 +24,7 @@ g storage 95 - -
 g scanner 96 - -
 g input 97 - -
 g power 98 - -
+g nobody 99 - -
 g users 100 - -
 u bin 1 - -
 u daemon 2 - -
