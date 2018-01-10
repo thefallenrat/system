@@ -5,7 +5,7 @@ pkgbase=linux-lts
 #pkgbase=linux-lts-custom
 _srcname=linux-4.9
 pkgver=4.9.75
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -85,7 +85,7 @@ build() {
 
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  [ "${pkgbase}" = "linux-lts" ] && groups=('base')
+#   [ "${pkgbase}" = "linux-lts" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
