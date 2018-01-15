@@ -2,7 +2,7 @@
 
 pkgbase=elogind
 pkgname=('elogind' 'libelogind')
-pkgver=235.1
+pkgver=235.2
 pkgrel=1
 pkgdesc="The systemd project's logind, extracted to a standalone package"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,7 +13,7 @@ options=('!libtool')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/elogind/elogind/archive/v${pkgver}.tar.gz"
         "protect-user-XDG_RUNTIME_DIR.patch")
 
-sha256sums=('75279a1c55c896a2fb4860aa186265030dbf1e058131505d4a663bbd17fa1d25'
+sha256sums=('db5d7362ab7fd74a1ea863247f90f3b821cdb3e4433ba049a2fdcf5bf62b0fb9'
             '4b04eb4bd87a6b0b15290f87b475d87920d5060ee7bf1583a2320f8f7f4c7658')
 
 prepare() {
@@ -39,7 +39,7 @@ build() {
 package_elogind() {
     pkgdesc="The systemd project's logind, extracted to a standalone package"
     provides=("elogind=${pkgver}")
-    depends=('acl' 'pam' 'dbus' 'eudev' 'libseccomp')
+    depends=('acl' 'pam' 'dbus' 'eudev' 'libseccomp' 'libelogind')
     conflicts=('consolekit')
     optdepends=('elogind-openrc: elogind initscript'
                 'polkit: polkit support')
