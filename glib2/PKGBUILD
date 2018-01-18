@@ -11,7 +11,7 @@ license=(LGPL2.1)
 arch=(x86_64)
 depends=(pcre libffi libutil-linux zlib)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux dbus)
-checkdepends=(desktop-file-utils)
+checkdepends=(desktop-file-utils shared-mime-info)
 optdepends=('python: for gdbus-codegen and gtester-report'
             'libelf: gresource inspection tool')
 options=(!emptydirs)
@@ -38,8 +38,7 @@ prepare() {
   # Suppress noise from glib-compile-schemas.hook
   patch -Np1 -i ../noisy-glib-compile-schemas.diff
   
-  # disable failing test due to no gnome-terminal present
-  sed -i -e "/appinfo\/launch/d" gio/tests/appinfo.c
+  sed -i -e 's/ tests//' {.,gio,glib}/Makefile.am
   
   NOCONFIGURE=1 ./autogen.sh
 }
@@ -58,10 +57,10 @@ build() {
   make
 }
 
-# check() {
-#   cd glib
-#   make check
-# }
+check() {
+  cd glib
+  make check
+}
 
 package_glib2() {
   cd glib
