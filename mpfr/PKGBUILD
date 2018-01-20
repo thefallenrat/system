@@ -13,7 +13,7 @@ arch=('x86_64')
 url="http://www.mpfr.org/"
 license=('LGPL')
 depends=('gmp>=5.0')
-makedepends=('libmpc=1.0.3-2')
+makedepends=('libmpc=1.0.3-2' 'mpfr=3.1.6.p1-1')
 source=(http://www.mpfr.org/mpfr-current/mpfr-${_pkgver}.tar.xz{,.asc}
         #mpfr-${_pkgver}-${_patchlevel}.patch
        )
