@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
-makedepends=('libldap' 'libusb-compat' 'pcslite')
+makedepends=('libldap' 'libusb-compat' 'pcsclite')
 checkdepends=('openssh')
 depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
          'pinentry' 'bzip2' 'readline' 'gnutls' 'sqlite')
