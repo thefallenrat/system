@@ -13,7 +13,7 @@ backup=('etc/'{protocols,services})
 source=('https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xml'
         'https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xml'
         'LICENSE')
-sha256sums=('59285ddb71cd7816184911ac9732956ea320d9a4ab3caf4cdc8d44eae86348f9'
+sha256sums=('3d4cb3332d0df1e6e514563613d2936542f0e8df832fd9d6b92324b52cb77269'
             '4992fbc5453d0feb48492e6abda96bf9285ff4d2516f6924a0f92f773dc4cea2'
             'dd37e92942d5a4024f1c77df49d61ca77fc6284691814903a741785df61f78cb')
 
